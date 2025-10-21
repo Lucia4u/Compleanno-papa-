@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buon Compleanno Papà!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Buon Compleanno!</h1>
+    </div>
+
+    <div class="candle">
+        <div class="flame"></div>
+        <div class="flame"></div>
+    </div>
+
+    <div class="candeline">
+        <div class="bastoncino"></div>
+        <div class="bastoncino"></div>
+    </div>
+    <img src="number.png" alt="Number">
+
+    <button id="letterButton">Clicca qui</button>
+
+    <div id="lettera" class="hidden">
+        <p>Ti voglio tanto bene Papà</p>
+        <p> Dalla tua Lucia :) </p>
+    </div>
+
+    <script>
+        const button = document.getElementById("letterButton");
+        const letter = document.getElementById("lettera");
+
+        button.addEventListener("click", () => {
+            letter.classList.toggle("show");
+        });
+    </script>
+
+</body>
+</html>

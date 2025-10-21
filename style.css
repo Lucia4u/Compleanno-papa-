@@ -1,0 +1,193 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* permette di mettere la scritta e poi l'immagine sotto */
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 15vh; /* spinge la scritta verso l'alto rispetto al centro */
+    background: linear-gradient(135deg, #00c6ff, #0072ff, #00ffb3); /* blu-verde sfumato */
+    font-family: 'Lucida Handwriting', sans-serif;
+}
+
+h1 {
+    font-size: 8vw; /* dimensione adattabile allo schermo */
+    color: #ffd800;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    animation: pop 1s ease-in-out infinite alternate; /* scritta che pulsa */
+    margin: 0;
+    text-shadow: 0 0 5px #fff3a0, /* alone chiara */
+    0 0 10px #ffd800, /* alone principale */
+    0 0 20px #ffbb00, /* alone più ampio */
+    2px 2px 4px rgba(0, 0, 0, 0.4); /* ombra leggera per contrasto */
+    font-size: 2.5em;
+    background: linear-gradient(90deg, #fff78a, #ffd800, #ffb400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.candeline {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    position: relative;
+    top: 80px; /* abbassa le candeline */
+    margin-bottom: -10px; /* riduce lo spazio extra fra candeline e immagine */
+}
+
+.bastoncino {
+    width: 5px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+img {
+    display: block; /* trasforma l'immagine in blocco per centrarla */
+    margin: 30px auto 0 auto; /* margine sopra 30px, centrata orizzontalmente */
+    width: 80%; /* occupa l'80% della larghezza dello schermo */
+    max-width: 400px; /* non diventa enorme su schermi grandi */
+    height: auto; /* mantiene le proporzioni */
+}
+
+.candle {
+    position: relative;
+    width: 200px; /* larghezza fissa o relativa alla candela */
+    margin: 0 auto; /* centra il container */
+}
+
+/* Fiammelle */
+.flame {
+    position: absolute;
+    top: 42px;
+    width: 20px;
+    height: 40px;
+    background: radial-gradient(ellipse at center, #ffeb3b 0%, #ff9800 70%, transparent 100%);
+    border-radius: 50% 50% 20% 20%;
+    animation: flicker 0.15s infinite alternate;
+}
+
+    /* Prima fiamma */
+    .flame:first-child {
+        left: -6%;
+    }
+
+    /* Seconda fiamma */
+    .flame:last-child {
+        left: 97%;
+    }
+
+/* effetto tremolio */
+@keyframes flicker {
+    0% {
+        transform: scale(1, 1) rotate(-2deg);
+        opacity: 0.9;
+        filter: hue-rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.05, 0.95) rotate(2deg);
+        opacity: 1;
+        filter: hue-rotate(10deg);
+    }
+
+    50% {
+        transform: scale(0.95, 1.05) rotate(-1deg);
+        opacity: 0.8;
+        filter: hue-rotate(-10deg);
+    }
+
+    75% {
+        transform: scale(1.1, 0.9) rotate(3deg);
+        opacity: 1;
+        filter: hue-rotate(5deg);
+    }
+
+    100% {
+        transform: scale(1, 1) rotate(-2deg);
+        opacity: 0.9;
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* Pulsante sempre visibile */
+#letterButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff, #00ffb3);
+    color: white;
+    font-family: "Lucida Handwriting", cursive;
+    font-size: 1.2em;
+    border: 3px solid #0e0e6022;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+    /* Effetto hover cliccabile */
+    #letterButton:hover {
+        transform: scale(1.05);
+        background-color: #66bb6a;
+    }
+
+/* Letterina */
+#lettera {
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(90deg, #fff78a, #ffd800, #ffb400);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    text-align: center;
+    font-family: "Lucida Handwriting", cursive;
+    font-size: 1.2em;
+    opacity: 0; /* invisibile inizialmente */
+    transform: scale(0.8); /* leggermente rimpicciolita */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none; /* disabilita interazione quando nascosta */
+    position: relative;
+    top: -400px;
+}
+
+    /* Classe per mostrarla */
+    #lettera.show {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto; /* abilita interazione quando visibile */
+        animation: float 3s ease-in-out infinite;
+    }
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    25% {
+        transform: translateY(-3px) scale(1.01);
+    }
+
+    50% {
+        transform: translateY(0) scale(1);
+    }
+
+    75% {
+        transform: translateY(3px) scale(0.99);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
